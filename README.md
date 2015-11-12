@@ -25,6 +25,8 @@ For example on a controller:
   <script type="text/javascript" src="airconsole-view-manager.js"></script>
 ```
 
+Javascript:
+
 ```javascript
   var air_console = new AirConsole();
   var vm = null;
