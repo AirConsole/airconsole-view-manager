@@ -1,0 +1,15 @@
+body {
+  background-color: #FFFFFF;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.view {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  padding: 20px;
+  border: 1px solid #3498db;
+  /* Recommend to do this, so that on load you do not see all container views */
+  display: none;
+}

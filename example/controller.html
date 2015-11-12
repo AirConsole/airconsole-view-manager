@@ -1,0 +1,58 @@
+<html>
+<head>
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="shared_styles.css">
+</head>
+<body>
+
+<h1>Controller</h1>
+
+<button id="set_custom_button_0">CTRL view start</button>
+<button id="set_custom_button_1">CTRL view ingame</button>
+<button id="set_custom_button_2">SCREEN ingame</button>
+
+  <div id="start" class="view default-view">
+    START
+  </div>
+
+  <div id="ingame" class="view">
+    INGAME
+  </div>
+
+  <div id="endgame" class="view">
+    GAME END!
+  </div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://www.airconsole.com/api/airconsole-1.2.1.js"></script>
+<script type="text/javascript" src="../airconsole-view-manager.js"></script>
+<script type="text/javascript">
+
+  var air_console = new AirConsole();
+  var vm = null;
+
+  air_console.onReady = function() {
+    vm = new AC.ViewManager(air_console);
+  };
+
+  air_console.onDeviceStateChange = function(device_id, user_data) {
+    vm.onViewChange(user_data, function(view_id) {
+      // view has changed
+    });
+  };
+
+  $("#set_custom_button_0").on('click', function () {
+    vm.controllersShow('start');
+  });
+
+  $("#set_custom_button_1").on('click', function () {
+    vm.controllersShow('ingame');
+  });
+
+  $("#set_custom_button_2").on('click', function () {
+    vm.screenShow('ingame');
+  });
+
+</script>
+</body>
+</html>

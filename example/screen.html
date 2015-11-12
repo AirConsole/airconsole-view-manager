@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="shared_styles.css">
+  </head>
+  <body>
+    <h1>Screen</h1>
+    <p>
+      <h4>Switch view on screen:</h4>
+      <button id="set_custom_button_2">SCREEN menu</button>
+      <button id="set_custom_button_3">SCREEN ingame</button>
+    </p>
+    <p>
+      <h4>Switch view on controllers:</h4>
+      <button id="set_custom_button_0">CTRL start</button>
+      <button id="set_custom_button_1">CTRL ingame</button>
+    </p>
+    <p>
+      <h4>Switch view on all:</h4>
+      <button id="set_custom_button_4">Show endgame view</button>
+    </p>
+
+    <!-- Define your views -->
+    <div id="main" class="view default-view">
+      START SCREEN MENU
+    </div>
+
+    <div id="ingame" class="view">
+      INGAME VIEW
+    </div>
+
+    <div id="endgame" class="view">
+      END-GAME VIEW
+    </div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="http://www.airconsole.com/api/airconsole-1.2.1.js"></script>
+  <script type="text/javascript" src="../airconsole-view-manager.js"></script>
+  <script type="text/javascript">
+    var air_console = new AirConsole();
+    var vm = null;
+
+    air_console.onReady = function() {
+      // Init the view manager
+      vm = new AC.ViewManager(air_console);
+    };
+
+    air_console.onDeviceStateChange = function(device_id, user_data) {
+      // Listen for view changes
+      vm.onViewChange(user_data, function(view_id) {
+        // view has changed
+      });
+    };
+
+    $("#set_custom_button_0").on('click', function () {
+      // All controller show 'start' view
+      vm.controllersShow('start');
+    });
+
+    $("#set_custom_button_1").on('click', function () {
+      vm.controllersShow('ingame');
+    });
+
+    $("#set_custom_button_2").on('click', function () {
+      // Screen shows 'start' view
+      vm.screenShow('main');
+    });
+
+    $("#set_custom_button_3").on('click', function () {
+      vm.screenShow('ingame');
+    });
+
+    $("#set_custom_button_4").on('click', function () {
+      vm.screenShow('endgame');
+      vm.controllersShow('endgame');
+    });
+
+  </script>
+  </body>
+</html>
