@@ -1,4 +1,10 @@
-var AC = {};
+var AC = AC || {};
+
+/**
+ * A view manager for both screen and controller
+ * @params {AirConsole} airconsole - The airconsole instance
+ * @constructor
+ */
 AC.ViewManager = function(airconsole) {
   this.airconsole = airconsole;
   this.views = {};

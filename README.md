@@ -8,7 +8,9 @@ You can use it on both, the screen and the controller.html.
 
 Include the airconsole javascript API file and the airconsole-view-manager.js file
 
-For example on a controller:
+For example in controller.html:
+
+HTML:
 
 ```html
 
@@ -21,7 +23,7 @@ For example on a controller:
     A wait view
   </div>
 
-  <script type="text/javascript" src="http://www.airconsole.com/api/airconsole-1.2.1.js"></script>
+  <script type="text/javascript" src="http://www.airconsole.com/api/airconsole-latest.js"></script>
   <script type="text/javascript" src="airconsole-view-manager.js"></script>
 ```
 
