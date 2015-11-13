@@ -14,8 +14,8 @@ AC.ViewManager = function(airconsole) {
     screen: null
   };
   this.class_start = 'default-view';
-  this.setupViews_();
   this.is_screen = airconsole.device_id === AirConsole.SCREEN;
+  this.setupViews_();
 };
 
 AC.ViewManager.prototype = {
@@ -45,7 +45,7 @@ AC.ViewManager.prototype = {
   /**
    * Called onDeviceStateChange
    * @param {Object} user_data - The device user data
-   * @param {Function} cb - A callback function
+   * @param {Function} cb - A callback function. Gets called when view was changed
    */
   onViewChange: function(user_data, cb) {
     if (!user_data || !user_data.custom) return;
@@ -53,8 +53,7 @@ AC.ViewManager.prototype = {
     var ctrl_view = user_data.custom.ctrl_view;
     var view_id = this.is_screen ? screen_view : ctrl_view;
     if (view_id) {
-      this.show(view_id);
-      if (cb) {
+      if (this.show(view_id) && typeof cb === 'function') {
         cb(view_id);
       }
     }
@@ -92,16 +91,19 @@ AC.ViewManager.prototype = {
    * @param {String} view - The view id
    */
   show: function(id) {
-    if (this.current_view.self === id) return;
-    var view = this.views[id];
-    if (view) {
-      this.current_view.self = id;
-      this.hideAll();
-      view.style.display = "block";
-    } else {
-      console.warn("Could not find view with ID:", id);
+    var state = false;
+    if (this.current_view.self !== id) {
+      var view = this.views[id];
+      if (view) {
+        this.current_view.self = id;
+        this.hideAll();
+        view.style.display = "block";
+        state = true;
+      } else {
+        console.warn("Could not find view with ID:", id);
+      }
     }
-    return this;
+    return state;
   },
 
   /**

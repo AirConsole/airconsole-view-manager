@@ -14,6 +14,9 @@ HTML:
 
 ```html
 
+  <!-- Define buttons to change views -->
+  <button id="set_ctrl_start_view">Set start view</button>
+
   <!-- Define your views -->
   <div id="start" class="view default-view">
     START CONTROLLER VIEW
@@ -53,11 +56,18 @@ Javascript:
 
   // Change view on all controllers, but not on this controller:
   $("#set_ctrl_wait_view").on('click', function () {
+    // Pass 'true' as second argument to only change other controller's views,
+    // except this one
     vm.controllersShow('wait_view', true);
   });
 
   // Change view on screen:
   $("#set_ctrl_game_end_view").on('click', function () {
     vm.screenShow('game_end');
+  });
+
+  // Only change view on this device:
+  $("#self_show_view").on('click', function () {
+    vm.show('custom_menu');
   });
 ```

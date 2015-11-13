@@ -1,3 +1,6 @@
+/*
+  This file is included by both screen.html and controller.html
+*/
 body {
   background-color: #FFFFFF;
   font-size: 20px;
