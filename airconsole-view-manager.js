@@ -1,11 +1,9 @@
-var AC = AC || {};
-
 /**
  * A view manager for both screen and controller
  * @params {AirConsole} airconsole - The airconsole instance
  * @constructor
  */
-AC.ViewManager = function(airconsole) {
+AirConsoleViewManager = function(airconsole) {
   this.airconsole = airconsole;
   this.views = {};
   this.current_view = {
@@ -18,7 +16,7 @@ AC.ViewManager = function(airconsole) {
   this.setupViews_();
 };
 
-AC.ViewManager.prototype = {
+AirConsoleViewManager.prototype = {
 
   /**
    * Called to setup the <div class="view"></div>
@@ -60,14 +58,23 @@ AC.ViewManager.prototype = {
   },
 
   /**
+   * Sets the device custom state
+   * @param {String} key
+   * @param {Mixed} value
+   */
+  setState: function(key, value) {
+    var state = this.airconsole.getCustomDeviceState() || {};
+    state[key] = value;
+    this.airconsole.setCustomDeviceState(state);
+  },
+
+  /**
    * Triggers a view change on all controllers
    * @param {String} view - The view id
    * @param {Boolean} except_me - This controller will not change the view
    */
   controllersShow: function(view, except_me) {
-    this.airconsole.setCustomDeviceState({
-      ctrl_view: view
-    });
+    this.setState('ctrl_view', view);
     if (!this.is_screen && !except_me) {
       vm.show(view);
     }
@@ -78,9 +85,7 @@ AC.ViewManager.prototype = {
    * @param {String} view - The view id
    */
   screenShow: function(view) {
-    this.airconsole.setCustomDeviceState({
-      screen_view: view
-    });
+    this.setState('screen_view', view);
     if (this.is_screen) {
       vm.show(view);
     }
