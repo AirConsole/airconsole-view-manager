@@ -38,7 +38,7 @@ Javascript:
 
   air_console.onReady = function() {
     // Init the ViewManager
-    vm = new AC.ViewManager(air_console);
+    vm = new AirConsoleViewManager(air_console);
   };
 
   air_console.onDeviceStateChange = function(device_id, user_data) {
