@@ -2,7 +2,16 @@
 
 Build to make it easier to switch between views on controller and screen.
 
-## API
+## How it works
+
+Each device has a property named ``custom``, which can be used to manage device
+specific states and properties.
+The View-Manager sets two properties ``ctrl_view`` and ``screen_view`` which hold the current
+visible id of the html container, either on the screen or on the controllers.
+If one those properties change (by onDeviceStateChange()), then the View-Manager shows
+the view and hides all others.
+
+## How to use
 
 You can use it on both, the screen and the controller.html.
 
@@ -13,7 +22,6 @@ For example in controller.html:
 HTML:
 
 ```html
-
   <!-- Define buttons to change views -->
   <button id="set_ctrl_start_view">Set start view</button>
 
