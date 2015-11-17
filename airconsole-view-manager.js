@@ -3,7 +3,7 @@
  * @params {AirConsole} airconsole - The airconsole instance
  * @constructor
  */
-AirConsoleViewManager = function(airconsole) {
+var AirConsoleViewManager = function(airconsole) {
   this.airconsole = airconsole;
   this.views = {};
   this.current_view = {
@@ -42,13 +42,13 @@ AirConsoleViewManager.prototype = {
 
   /**
    * Called onDeviceStateChange
-   * @param {Object} user_data - The device user data
+   * @param {Object} custom_data - The device user data
    * @param {Function} cb - A callback function. Gets called when view was changed
    */
-  onViewChange: function(user_data, cb) {
-    if (!user_data || !user_data.custom) return;
-    var screen_view = user_data.custom.screen_view;
-    var ctrl_view = user_data.custom.ctrl_view;
+  onViewChange: function(custom_data, cb) {
+    if (!custom_data) return;
+    var screen_view = custom_data.screen_view;
+    var ctrl_view = custom_data.ctrl_view;
     var view_id = this.is_screen ? screen_view : ctrl_view;
     if (view_id) {
       if (this.show(view_id) && typeof cb === 'function') {
@@ -63,9 +63,7 @@ AirConsoleViewManager.prototype = {
    * @param {Mixed} value
    */
   setState: function(key, value) {
-    var state = this.airconsole.getCustomDeviceState() || {};
-    state[key] = value;
-    this.airconsole.setCustomDeviceState(state);
+    this.airconsole.setCustomDeviceStateProperty(key, value);
   },
 
   /**
