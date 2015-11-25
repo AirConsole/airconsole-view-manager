@@ -90,6 +90,15 @@ AirConsoleViewManager.prototype = {
   },
 
   /**
+   * Triggers a view change on both the screen and controllers
+   * @param {String} view - The view id
+   */
+  allShow: function(view) {
+    this.screenShow(view);
+    this.controllersShow(view);
+  },
+
+  /**
    * Shows a view and hides all others
    * @param {String} view - The view id
    */

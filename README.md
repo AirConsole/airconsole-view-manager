@@ -79,4 +79,9 @@ Javascript:
   $("#self_show_view").on('click', function () {
     vm.show('custom_menu');
   });
+
+  // Change view on both screen and all controllers:
+  $("#set_all_game_end_view").on('click', function () {
+    vm.allShow('game_end');
+  });
 ```
