@@ -49,14 +49,15 @@ Javascript:
     vm = new AirConsoleViewManager(air_console);
   };
 
-  air_console.onDeviceStateChange = function(device_id, user_data) {
-    // Listen for changes on the view
-    vm.onViewChange(user_data, function(view_id) {
+  // Listen for view changes
+  airconsole.onCustomDeviceStateChange = function(device_id, data) {
+    vm.onViewChange(data, function(view_id) {
       // view has changed
     });
   };
 
-  // For example with jQuery, change view on all controllers:
+  // For example: change view on all controllers:
+  // (We use jQuery to bind the click handler :)
   $("#set_ctrl_start_view").on('click', function () {
     // 'start' is the Id of the div container
     vm.controllersShow('start');
