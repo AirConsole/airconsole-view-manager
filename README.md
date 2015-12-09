@@ -34,7 +34,7 @@ HTML:
     A wait view
   </div>
 
-  <script type="text/javascript" src="http://www.airconsole.com/api/airconsole-latest.js"></script>
+  <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-latest.js"></script>
   <script type="text/javascript" src="airconsole-view-manager.js"></script>
 ```
 
