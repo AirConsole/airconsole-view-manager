@@ -74,7 +74,7 @@ AirConsoleViewManager.prototype = {
   controllersShow: function(view, except_me) {
     this.setState('ctrl_view', view);
     if (!this.is_screen && !except_me) {
-      vm.show(view);
+      this.show(view);
     }
   },
 
@@ -85,7 +85,7 @@ AirConsoleViewManager.prototype = {
   screenShow: function(view) {
     this.setState('screen_view', view);
     if (this.is_screen) {
-      vm.show(view);
+      this.show(view);
     }
   },
 
