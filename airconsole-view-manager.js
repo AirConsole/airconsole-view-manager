@@ -72,6 +72,7 @@ AirConsoleViewManager.prototype = {
    * @param {Boolean} except_me - This controller will not change the view
    */
   controllersShow: function(view, except_me) {
+    if (!view) return;
     this.setState('ctrl_view', view);
     if (!this.is_screen && !except_me) {
       this.show(view);
@@ -83,6 +84,7 @@ AirConsoleViewManager.prototype = {
    * @param {String} view - The view id
    */
   screenShow: function(view) {
+    if (!view) return;
     this.setState('screen_view', view);
     if (this.is_screen) {
       this.show(view);
