@@ -41,12 +41,12 @@ HTML:
 Javascript:
 
 ```javascript
-  var air_console = new AirConsole();
+  var airconsole = new AirConsole();
   var vm = null;
 
-  air_console.onReady = function() {
+  airconsole.onReady = function() {
     // Init the ViewManager
-    vm = new AirConsoleViewManager(air_console);
+    vm = new AirConsoleViewManager(airconsole);
   };
 
   // Listen for view changes
